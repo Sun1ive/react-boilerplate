@@ -22,14 +22,17 @@ const MoviesListPage = ({
 }) => (
   <div className={styles.root}>
     <CheckBox
-      label="Favorites"
+      label={t('Favorites')}
       checked={isFavorite}
       onClick={onFilterHandler}
     />
     <div className={styles.list}>
       {(isFavorite ? movies.filter(x => x.isFavorite) : movies).map(movie => (
         <div className={styles.item} key={movie.id}>
-          <MovieCard movie={movie} onClick={() => onMovieCardClick(movie)} />
+          <MovieCard
+            movie={movie}
+            onClick={() => onMovieCardClick(movie)}
+          />
         </div>
       ))}
     </div>
