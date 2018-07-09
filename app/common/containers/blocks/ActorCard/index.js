@@ -5,19 +5,19 @@ import { compose } from 'recompose';
 import Poster from '@/components/Poster';
 import styles from './styles.scss';
 
-const MovieCard = ({ movie, ...rest }) => (
+const ActorCard = ({ actor, ...rest }) => (
   <div className={styles.root} {...rest}>
     <div className={styles.poster}>
-      <Poster isFavorite={movie.isFavorite} src={movie.poster} title={movie.title} />
+      <Poster isFavorite={actor.isFavorite} src={actor.photo} title={actor.name} />
     </div>
     <div className={styles.content}>
-      <div className={styles.title}>{movie.title}</div>
+      <div className={styles.title}>{actor.name}</div>
     </div>
   </div>
 );
 
-MovieCard.propTypes = {
+ActorCard.propTypes = {
   children: PropTypes.node,
 };
 
-export default compose(withStyles(styles))(MovieCard);
+export default compose(withStyles(styles))(ActorCard);

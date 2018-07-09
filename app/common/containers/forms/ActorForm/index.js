@@ -12,13 +12,13 @@ import CheckBox from '@/components/CheckBox';
 
 import { reduxFormValidate } from 'react-nebo15-validate';
 
-const MovieForm = ({ buttonText, handleSubmit, t }) => (
+const ActorForm = ({ buttonText, handleSubmit, t }) => (
   <Form onSubmit={handleSubmit}>
-    <FormRow label={t('Title')}>
-      <Field component={FormField} inputComponent={TextInput} name="title" />
+    <FormRow label={t('name')}>
+      <Field component={FormField} inputComponent={TextInput} name="name" />
     </FormRow>
-    <FormRow label={t('Poster url')}>
-      <Field component={FormField} inputComponent={TextInput} name="poster" />
+    <FormRow label={t('Photo url')}>
+      <Field component={FormField} inputComponent={TextInput} name="photo" />
     </FormRow>
     <FormRow label={t('Description')}>
       <Field
@@ -35,11 +35,15 @@ const MovieForm = ({ buttonText, handleSubmit, t }) => (
         type="number"
       />
     </FormRow>
-    <FormRow label={t('Director')}>
-      <Field component={FormField} inputComponent={TextInput} name="director" />
+    <FormRow label={t('Movie')}>
+      <Field component={FormField} inputComponent={TextInput} name="movies" />
     </FormRow>
     <FormRow>
-      <Field component={FormField} inputComponent={CheckBox} name="isFavorite" />
+      <Field
+        component={FormField}
+        inputComponent={CheckBox}
+        name="isFavorite"
+      />
     </FormRow>
     <FormRow>
       <Button type="submit">{buttonText || t('Create')}</Button>
@@ -53,10 +57,10 @@ export default compose(
     form: 'movie-form',
     initialValues: {},
     validate: reduxFormValidate({
-      title: {
+      name: {
         required: true,
       },
-      poster: {
+      photo: {
         // eslint-disable-next-line
         format: /[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/,
         required: true,
@@ -68,9 +72,9 @@ export default compose(
         minLength: 4,
         required: true,
       },
-      director: {
+      movie: {
         required: true,
       },
     }),
   }),
-)(MovieForm);
+)(ActorForm);
